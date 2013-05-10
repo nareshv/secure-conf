@@ -1,0 +1,32 @@
+{
+  "name": "secure-conf",
+  "description": "Secure Configuration Files",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nareshv/secure-conf.git"
+  },
+  "dependencies": {
+    "pw" : ""
+  },
+  "main": "index.js",
+  "keywords": [
+    "secure",
+    "configuration",
+    "encrypt",
+    "decrypt"
+  ],
+  "directories": {
+    "lib": ".",
+    "example": "example"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Naresh Kumar",
+    "email": "vnareshkumar@gmail.com",
+    "url": "http://nareshv.blogspot.com"
+  }
+}
