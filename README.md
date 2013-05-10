@@ -2,7 +2,7 @@
 
 Use this module to secure your configuration files.
 
-# Sample configuration file
+## Sample configuration file
 
 ```
 {
@@ -19,12 +19,12 @@ Use this module to secure your configuration files.
 }
 ```
 
-# Secure the configuration file using the following node code
+## Secure the configuration file using the following node code
 
 ```
 #!/usr/bin/env node
 
-var SecureConf = require('../index.js');
+var SecureConf = require('secure-conf');
 var sconf      = new SecureConf();
 
 sconf.encryptFile(
@@ -41,7 +41,7 @@ sconf.encryptFile(
 );
 ```
 
-# Use encrypted configuration file in your app
+## Use encrypted configuration file in your app
 
 When you launch the below program, you will need to enter the password that 
 you have used to create the config file `test.json.enc`
@@ -68,10 +68,17 @@ sconf.decryptFile(ef, function(err, file, content) {
 NOTE: This module is not a substitute for your server encryption. Its just inspired by the way
 we encrypt the ssl certs and use them while launching apache/nginx, etc.
 
-# License
+## Configuration
+
+You can pass the following parameters to the constructor
+
+* `prompt` : Prompt that has to be shown
+* `algo`   : Algorithm that should be used for both encryption/decryption (see nodejs docs for supported symmetric algorithms)
+
+## License
 
 MIT
 
-# Author
+## Author
 
 nareshv@
