@@ -1,4 +1,4 @@
-# Secure Node.js Configuration Files
+# Securing Node.js Configuration Files
 
 Use this module to secure your configuration files.
 
@@ -65,8 +65,12 @@ sconf.decryptFile(ef, function(err, file, content) {
 });
 ```
 
-NOTE: This module is not a substitute for your server encryption. Its just inspired by the way
-we encrypt the ssl certs and use them while launching apache/nginx, etc.
+NOTE: This module is not a substitute for your server/application security. Passwords are freely available in the RAM,
+a determined [Hacker](http://en.wikipedia.org/wiki/Hacker_%28computer_security%29) can get whatever she wants. 
+
+## Inspiration
+
+The way we protect the ssl certs and used on Apache/nginx via startup passphrase.
 
 ## Configuration
 
@@ -75,6 +79,10 @@ You can pass the following parameters to the constructor
 * `prompt` : Prompt that has to be shown
 * `algo`   : Algorithm that should be used for both encryption/decryption (see nodejs docs for supported symmetric algorithms)
 
+## Version
+
+0.0.3
+
 ## License
 
 MIT
@@ -82,3 +90,11 @@ MIT
 ## Author
 
 nareshv@
+
+## Security
+
+Read the code.
+
+## Bugs
+
+Use the software and file them if any.

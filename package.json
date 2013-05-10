@@ -1,7 +1,7 @@
 {
   "name": "secure-conf",
   "description": "Secure Configuration Files",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "git://github.com/nareshv/secure-conf.git"
@@ -14,7 +14,7 @@
     "secure",
     "configuration",
     "config file",
-    "password protect"
+    "password protect",
     "encrypt",
     "decrypt"
   ],
@@ -23,7 +23,7 @@
     "example": "example"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.4.0"
   },
   "license": "MIT",
   "author": {

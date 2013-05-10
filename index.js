@@ -1,4 +1,5 @@
 var SecureConf = function(options) {
+    options      = options || {};
     this.options = {
         prompt : 'File Password : ',
         algo   : 'aes-128-ecb'
