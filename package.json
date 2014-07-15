@@ -1,7 +1,7 @@
 {
   "name": "secure-conf",
   "description": "Secure Configuration Files",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git://github.com/nareshv/secure-conf.git"
