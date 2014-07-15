@@ -68,6 +68,19 @@ sconf.decryptFile(ef, function(err, file, content) {
 NOTE: This module is not a substitute for your server/application security. Passwords are freely available in the RAM,
 a determined [Hacker](http://en.wikipedia.org/wiki/Hacker_%28computer_security%29) can get whatever she wants. 
 
+## Testing
+
+There is a sample script under `examples` directory. Follow these steps to test the example.
+
+```bash
+
+cd examples
+node test.js
+<enter password of your choice when asked>
+
+<see that decrypted content is same as what is in 'test.json'>
+```
+
 ## Inspiration
 
 The way we protect the ssl certs and used on Apache/nginx via startup passphrase.
@@ -81,7 +94,7 @@ You can pass the following parameters to the constructor
 
 ## Version
 
-0.0.3
+0.0.4
 
 ## License
 

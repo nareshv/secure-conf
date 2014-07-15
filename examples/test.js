@@ -3,6 +3,11 @@
 var SecureConf = require('../index.js');
 var sconf      = new SecureConf();
 
+console.log("======== Supported Encryption Algorithms =======");
+console.log(JSON.stringify(sconf.getCiphers()));
+console.log("====");
+
+console.log("Please type in a password to encrypt contents of 'test.json' file .");
 sconf.encryptFile(
     "./test.json",
     "./test.json.enc",
