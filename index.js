@@ -1,18 +1,15 @@
 var SecureConf = function(options) {
     options      = options || {};
     this.options = {
-        prompt : 'File Password : ',
         algo   : 'aes-128-ecb',
         file   : {
             encoding : 'utf8',
             out_text : 'hex'
         }
     };
-    this.options.prompt = options.prompt ? options.prompt : this.options.prompt;
     this.options.algo   = options.algo   ? options.algo   : this.options.algo;
     this.options.file.encoding = options.file_encoding ? options.file_encoding : this.options.file.encoding;
     this.options.file.out_text = options.file_out_text ? options.file_out_text : this.options.file.out_text;
-    this.pw = require('pw');
     this.fs = require('fs');
     this.crypto = require('crypto');
 };
@@ -34,32 +31,30 @@ SecureConf.prototype.decryptContent = function(content, pass) {
     } catch(ex) {}
     return decrypted;
 };
-SecureConf.prototype.decryptFile = function(file, callback) {
+SecureConf.prototype.decryptFile = function(file, password, callback) {
     var self = this, dec;
-    process.stdout.write(self.options.prompt);
-    this.pw(function (password) {
-        dec = self.decryptContent(self.fs.readFileSync(file, { encoding : self.options.file.encoding }),password);
-        if (dec === undefined) {
-            callback('Decryption Failed', file);
-        } else {
-            callback(null, file, dec);
-        }
-    });
+
+    dec = self.decryptContent(self.fs.readFileSync(file, { encoding : self.options.file.encoding }),password);
+    if (dec === undefined) {
+        callback('Decryption Failed', file);
+    } else {
+        callback(null, file, dec);
+    }
 };
-SecureConf.prototype.encryptFile = function(file, encfile, callback) {
+SecureConf.prototype.encryptFile = function(file, encfile, password, callback) {
     var self = this, enc;
-    process.stdout.write(self.options.prompt);
-    this.pw(function (password) {
-        enc = self.encryptContent(self.fs.readFileSync(file), password);
-        if (enc === undefined) {
-            callback('Encryption Failed', file, encfile, enc);
-        } else {
-            self.fs.writeFileSync(encfile, enc);
-            callback(null, file, encfile, enc);
-        }
-    });
+
+    enc = self.encryptContent(self.fs.readFileSync(file), password);
+    if (enc === undefined) {
+        callback('Encryption Failed', file, encfile, enc);
+    } else {
+        self.fs.writeFileSync(encfile, enc);
+        callback(null, file, encfile, enc);
+    }
+
 };
 SecureConf.prototype.getCiphers = function() {
     return this.crypto.getCiphers();
 }
+
 module.exports = SecureConf;
