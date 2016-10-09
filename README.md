@@ -111,7 +111,7 @@ You can pass the following parameters to the constructor
 
 ## Version
 
-0.0.4
+0.0.5
 
 ## License
 
@@ -120,6 +120,7 @@ MIT
 ## Author
 
 nareshv@
+ugursogukpinar
 
 ## Security
 
