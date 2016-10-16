@@ -11,7 +11,6 @@ console.log("====");
 
 console.log("Please type in a password to encrypt contents of 'test.json' file .");
 
-process.stdout.write("Password: ");
 
 pw(function (password) {
     sconf.encryptFile(
