@@ -119,8 +119,8 @@ MIT
 
 ## Author
 
-nareshv@
-ugursogukpinar
+- nareshv@
+- ugursogukpinar
 
 ## Security
 
