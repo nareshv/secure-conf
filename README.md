@@ -26,19 +26,27 @@ Use this module to secure your configuration files.
 
 var SecureConf = require('secure-conf');
 var sconf      = new SecureConf();
+var pw         = require("pw");
 
-sconf.encryptFile(
-    "./test.json",
-    "./test.json.enc",
-    function(err, f, ef, ec) {
-        if (err) {
-            console.log("failed to encrypt %s, error is %s", f, err);
-        } else {
-            console.log("encrypt %s to %s complete.", f, ef);
-            console.log("encrypted contents are %s", ec);
+// You can pass it from anywhere you want.
+process.stdout.write("Password: ");
+
+pw(function(password){
+    sconf.encryptFile(
+        "./test.json",
+        "./test.json.enc",
+        password
+        function(err, f, ef, ec) {
+            if (err) {
+                console.log("failed to encrypt %s, error is %s", f, err);
+            } else {
+                console.log("encrypt %s to %s complete.", f, ef);
+                console.log("encrypted contents are %s", ec);
+            }
         }
-    }
-);
+    );
+})
+
 ```
 
 ## Use encrypted configuration file in your app
@@ -55,14 +63,22 @@ var ef         = "./test.json.enc";
 var express    = require('express');
 var app        = express();
 
-sconf.decryptFile(ef, function(err, file, content) {
-    if (err) {
-        console.log('Unable to retrieve the configuration contents.');
-    } else {
-        var config = JSON.parse(content);
-        app.listen(config.production.app.port);
-    }
+// You can pass it from anywhere you want.
+process.stdout.write("Password: ");
+
+var pw         = require("pw");
+
+pw(function(password){
+    sconf.decryptFile(ef, password, function(err, file, content) {
+        if (err) {
+            console.log('Unable to retrieve the configuration contents.');
+        } else {
+            var config = JSON.parse(content);
+            app.listen(config.production.app.port);
+        }
+    });
 });
+
 ```
 
 NOTE: This module is not a substitute for your server/application security. Passwords are freely available in the RAM,
@@ -94,7 +110,7 @@ You can pass the following parameters to the constructor
 
 ## Version
 
-0.0.4
+0.0.5
 
 ## License
 
@@ -102,7 +118,11 @@ MIT
 
 ## Author
 
-nareshv@
+- nareshv@
+
+## Contributors
+
+- ugursogukpinar
 
 ## Security
 
